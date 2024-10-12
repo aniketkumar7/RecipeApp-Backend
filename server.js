@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(
   cors({
-    origin: "https://your-frontend-url.vercel.app", // Replace with your actual frontend URL
+    origin: "https://foodapp-iota-five.vercel.app/",
   })
 );
 
