@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
+app.use(
+  cors({
+    origin: "https://your-frontend-url.vercel.app", // Replace with your actual frontend URL
+  })
+);
 
 app.use("/", require("./routes/user"));
 app.use("/recipe", require("./routes/recipe"));
