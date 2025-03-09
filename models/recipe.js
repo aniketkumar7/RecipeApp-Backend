@@ -6,7 +6,7 @@ const recipeSchema = mongoose.Schema({
         required: true
     },
     ingredients: {
-        type: Array,
+        type: [String],
         required: true
     },
     instructions: {
@@ -18,6 +18,7 @@ const recipeSchema = mongoose.Schema({
     },
     coverImage: {
         type: String,
+        required: true
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
