@@ -2,19 +2,19 @@
 const Recipes = require("../models/recipe");
 const multer = require("multer");
 
-// create storage for multer
-// destination: where the file will be stored
+// Backend image upload configuration
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public/images");
+  destination: function(req, file, cb) {
+    cb(null, 'public/images/');
   },
-  filename: function (req, file, cb) {
-    const filename = Date.now() + "-" + file.fieldname;
-    cb(null, filename);
-  },
+  filename: function(req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
 });
 
 const upload = multer({ storage: storage });
+
 
 // create getRecipes function to get recipes
 const getRecipes = async (req, res) => {
