@@ -24,7 +24,7 @@ const recipeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }
-}, { timestamps: true });
+},{timestamps: true});
 
 // export model
 // model method in mongoose is used to create a model
