@@ -19,5 +19,4 @@ router.put("/:id", upload.single("file"), editRecipe);
 // Route for deleting recipes
 router.delete("/:id", deleteRecipe);
 
-
 module.exports = router;
