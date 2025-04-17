@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const recipeSchema = mongoose.Schema({
     title: {
@@ -6,7 +6,7 @@ const recipeSchema = mongoose.Schema({
         required: true
     },
     ingredients: {
-        type: [String],
+        type: Array,
         required: true
     },
     instructions: {
@@ -18,16 +18,12 @@ const recipeSchema = mongoose.Schema({
     },
     coverImage: {
         type: String,
-        required: true
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "User"
     }
-},{timestamps: true});
 
-// export model
-// model method in mongoose is used to create a model
-// we pass the name of the model and the schema
-// Recipes is table name
+}, { timestamps: true })
+
 module.exports = mongoose.model("Recipes", recipeSchema)

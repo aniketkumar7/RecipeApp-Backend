@@ -1,23 +1,12 @@
-const express = require("express");
-const { getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe, upload } = require("../controller/recipe");
-const verifyToken = require("../middleware/auth");
-const router = express.Router();
+const express = require("express")
+const { getRecipes, getRecipe, addRecipe, editRecipe, deleteRecipe, upload } = require("../controller/recipe")
+const verifyToken = require("../middleware/auth")
+const router = express.Router()
 
-// create route for home page
-// It is used to get all the recipes
-router.get("/", getRecipes);
+router.get("/", getRecipes) //Get all recipes
+router.get("/:id", getRecipe) //Get recipe by id
+router.post("/", upload.single('file'), verifyToken, addRecipe) //add recipe
+router.put("/:id", upload.single('file'), editRecipe) //Edit recipe
+router.delete("/:id", deleteRecipe) //Delete recipe
 
-// Route for getting recipes by id
-router.get("/:id", getRecipe);
-
-// Route for adding recipes
-router.post("/", upload.single("file"), verifyToken, addRecipe);
-
-// Route for updating recipes
-router.put("/:id", upload.single("file"), editRecipe);
-
-// Route for deleting recipes
-router.delete("/:id", deleteRecipe);
-
-
-module.exports = router;
+module.exports = router
